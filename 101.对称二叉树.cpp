@@ -56,7 +56,7 @@ public:
         stk.push(root->left);
         stk.push(root->right);
         bool ans = true;
-        while (!stk.empty())
+        while (!stk.empty() && ans)
         {
             TreeNode *tree1 = NULL;
             TreeNode *tree2 = NULL;
@@ -74,7 +74,7 @@ public:
                 else
                     return false;
             }
-            ans = ans && (tree1->val == tree2->val);
+            ans = tree1->val == tree2->val;
             stk.push(tree1->left);
             stk.push(tree2->right);
             stk.push(tree1->right);
