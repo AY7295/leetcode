@@ -4,6 +4,8 @@
  * [21] 合并两个有序链表
  */
 #include <algorithm>
+
+//  Definition for singly-linked list.
 struct ListNode
 {
     int val;
@@ -12,47 +14,49 @@ struct ListNode
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
+
 // @lc code=start
-
-//  Definition for singly-linked list.
-
 class Solution
 {
 public:
-    // descp most voted solution
+    // descp mine
     ListNode *mergeTwoLists(ListNode *a, ListNode *b)
     {
-        if (!a || b && a->val > b->val)
-            std::swap(a, b);
-        if (a)
-            a->next = mergeTwoLists(a->next, b);
-        return a;
+        auto res = new ListNode(-1);
+        auto head = res;
+
+        while (a != nullptr || b != nullptr)
+        {
+            if (a != nullptr && b != nullptr)
+            {
+                if (a->val < b->val)
+                {
+                    head->next = a;
+                    a = a->next;
+                }
+                else
+                {
+                    head->next = b;
+                    b = b->next;
+                }
+                head = head->next;
+                continue;
+            }
+            head->next = a == nullptr ? b : a;
+            break;
+        }
+
+        return res->next;
     }
 
-    // descp mine
+    // descp most voted solution
     // ListNode *mergeTwoLists(ListNode *a, ListNode *b)
     // {
-    //     auto result = new ListNode(-1);
-    //     auto *head = result;
-
-    //     for (; nullptr != a && nullptr != b;)
-    //     {
-    //         if (a->val < b->val)
-    //         {
-    //             head->next = a;
-    //             a = a->next;
-    //         }
-    //         else
-    //         {
-    //             head->next = b;
-    //             b = b->next;
-    //         }
-    //         head = head->next;
-    //     }
-
-    //     head->next = a != nullptr ? a : b;
-
-    //     return result->next;
+    //     if (!a || b && a->val > b->val)
+    //         std::swap(a, b);
+    //     if (a)
+    //         a->next = mergeTwoLists(a->next, b);
+    //     return a;
     // }
 };
 // @lc code=end
