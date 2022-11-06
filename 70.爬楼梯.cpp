@@ -36,15 +36,5 @@ public:
     //      }
     //      return dp[n];
     //  }
-
-    // tip 递归超时
-    // int climbStairs(int n)
-    // {
-    //     if (n == 1 || n == 0)
-    //     {
-    //         return 1;
-    //     }
-    //     return climbStairs(n - 1) + climbStairs(n - 2);
-    // }
 };
 // @lc code=end
