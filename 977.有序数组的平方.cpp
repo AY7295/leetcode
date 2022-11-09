@@ -10,35 +10,45 @@ class Solution
 {
 public:
     // descp double pointer
-    vector<int> sortedSquares(vector<int> &A)
+    // vector<int> sortedSquares(vector<int> &A)
+    // {
+    //     int k = A.size() - 1;
+    //     vector<int> result(A.size(), 0);
+    //     for (int i = 0, j = A.size() - 1; i <= j;)
+    //     { // 注意这里要i <= j，因为最后要处理两个元素
+    //         if (A[i] * A[i] < A[j] * A[j])
+    //         {
+    //             result[k--] = A[j] * A[j];
+    //             j--;
+    //         }
+    //         else
+    //         {
+    //             result[k--] = A[i] * A[i];
+    //             i++;
+    //         }
+    //     }
+    //     return result;
+    // }
+
+    // descp mine
+    vector<int> sortedSquares(vector<int> &nums)
     {
-        int k = A.size() - 1;
-        vector<int> result(A.size(), 0);
-        for (int i = 0, j = A.size() - 1; i <= j;)
-        { // 注意这里要i <= j，因为最后要处理两个元素
-            if (A[i] * A[i] < A[j] * A[j])
+        int len = nums.size(), l = 0, r = len - 1;
+        vector<int> res(len);
+        for (int n = len - 1; l <= r; n--)
+        {
+            if (nums[r] * nums[r] > nums[l] * nums[l])
             {
-                result[k--] = A[j] * A[j];
-                j--;
+                res[n] = nums[r] * nums[r];
+                r--;
             }
             else
             {
-                result[k--] = A[i] * A[i];
-                i++;
+                res[n] = nums[l] * nums[l];
+                l++;
             }
         }
-        return result;
+        return res;
     }
-
-    // descp mine
-    // vector<int> sortedSquares(vector<int> &nums)
-    // {
-    //     for (int i = 0; i < nums.size(); i++)
-    //     {
-    //         nums[i] = nums[i] * nums[i];
-    //     }
-    //     std::sort(nums.begin(), nums.end());
-    //     return nums;
-    // }
 };
 // @lc code=end
