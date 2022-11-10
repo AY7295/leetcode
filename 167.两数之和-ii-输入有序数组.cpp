@@ -12,8 +12,7 @@ public:
     // descp mine
     vector<int> twoSum(vector<int> &numbers, int target)
     {
-
-        int len = numbers.size(), left = 0, right = len - 1, sum;
+        int left = 0, right = numbers.size() - 1, sum;
         while (left < right)
         {
             sum = numbers[left] + numbers[right];
@@ -22,9 +21,9 @@ public:
             else if (sum < target)
                 left++;
             else
-                break;
+                return {left + 1, right + 1};
         }
-        return {left + 1, right + 1};
+        return {};
     }
 };
 // @lc code=end

@@ -9,42 +9,18 @@ using namespace std;
 class Solution
 {
 public:
-    // descp most voted solution
+    // descp  mine
     void moveZeroes(vector<int> &nums)
     {
-        int j = 0;
-        // move all the nonzero elements advance
-        for (int i = 0; i < nums.size(); i++)
+        int len = nums.size();
+        int k = 0;
+        for (int i = 0; i < len; i++)
         {
             if (nums[i] != 0)
-            {
-                nums[j++] = nums[i];
-            }
+                nums[k++] = nums[i];
         }
-        for (; j < nums.size(); j++)
-        {
-            nums[j] = 0;
-        }
+        while (k < len)
+            nums[k++] = 0;
     }
-
-    // descp  mine
-    // void moveZeroes(vector<int> &nums)
-    // {
-    //     int len = nums.size();
-    //     for (int i = 0; i < len;)
-    //     {
-    //         if (0 == nums[i])
-    //         {
-    //             for (int k = i; k < len - 1; k++)
-    //             {
-    //                 nums[k] = nums[k + 1];
-    //             }
-    //             nums[len - 1] = 0;
-    //             len--;
-    //         }
-    //         else
-    //             i++;
-    //     }
-    // }
 };
 // @lc code=end
