@@ -20,7 +20,7 @@ struct ListNode
 class Solution
 {
 public:
-    // descp most voted solution
+    // descp mine
     ListNode *middleNode(ListNode *head)
     {
         ListNode *slow = head, *fast = head;
@@ -31,16 +31,5 @@ public:
         }
         return slow;
     }
-    // descp mine
-    // ListNode *middleNode(ListNode *head)
-    // {
-    //     vector<ListNode *> v;
-    //     while (head != nullptr)
-    //     {
-    //         v.push_back(head);
-    //         head = head->next;
-    //     }
-    //     return v[v.size() / 2];
-    // }
 };
 // @lc code=end
