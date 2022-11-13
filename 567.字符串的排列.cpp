@@ -13,45 +13,26 @@ public:
     // descp most voted solution
     bool checkInclusion(string s1, string s2)
     {
-        unordered_map<char, int> mp; // Use hashmap to store the frequencies of all the characters present in string s1.
-        for (auto it : s1)
+        if (s1.size() > s2.size())
+            return false;
+
+        vector<int> H_S1(26, 0);
+        vector<int> H_S2(26, 0);
+
+        for (int i = 0; i < s1.size(); ++i)
         {
-            mp[it]++;
+            H_S1[s1[i] - 'a']++;
+            H_S2[s2[i] - 'a']++;
         }
-        int count = mp.size(); // Use the count variable to see if all of the characters in the map have the same frequency, indicating that an anagram has been found.
-        int i = 0, j = 0;
-        int k = s1.size(); // Window Size
-        while (j < s2.size())
+        if (H_S1 == H_S2)
+            return true;
+
+        for (int j = s1.size(), i = 0; j < s2.size(); ++j, ++i)
         {
-            if (mp.find(s2[j]) != mp.end())
-            { // If a character is found that already exists in the map, reduce its frequency by one.
-                mp[s2[j]]--;
-                if (mp[s2[j]] == 0)
-                { // If the frequency of a specific character on the map is 0, it means that all occurrences of that character is found inside the current window size.
-                    count--;
-                }
-            }
-            if (j - i + 1 < k)
-            {
-                j++;
-            }
-            else if (j - i + 1 == k)
-            {
-                if (count == 0)
-                { // Anagram found
-                    return true;
-                }
-                if (mp.find(s2[i]) != mp.end())
-                { // Check if that character is present in the map while sliding the window, then increase its frequency by one, as we decreased its frequency when we first met it while crossing the window.
-                    mp[s2[i]]++;
-                    if (mp[s2[i]] == 1)
-                    {
-                        count++;
-                    }
-                }
-                i++;
-                j++;
-            }
+            H_S2[s2[i] - 'a']--;
+            H_S2[s2[j] - 'a']++;
+            if (H_S1 == H_S2)
+                return true;
         }
         return false;
     }
@@ -60,8 +41,10 @@ public:
     // bool checkInclusion(string s1, string s2)
     // {
     //     int len1 = s1.size(), len2 = s2.size(), k = 0;
+    //     if (len1 > len2)
+    //         return false;
 
-    //     vector<int> o(256, -1);
+    //     vector<int> o(256, -1), temp;
     //     for (auto &&i : s1)
     //     {
     //         if (o[i] == -1)
@@ -72,10 +55,10 @@ public:
 
     //     for (int i = 0; i <= len2 - len1; i++)
     //     {
-    //         auto temp = o;
+    //         temp = o;
     //         for (k = i; k < len1 + i; k++)
     //         {
-    //             if (temp.at(s2[k]) == -1 || temp[s2[k]] == 0)
+    //             if (temp[s2[k]] < 1)
     //                 break;
     //             else
     //                 temp[s2[k]]--;
