@@ -4,37 +4,41 @@
  * [733] 图像渲染
  */
 #include <algorithm>
+#include <queue>
 using namespace std;
 // @lc code=start
 class Solution
 {
-    void help(vector<vector<int>> &image, int x, int y, int color, int target)
-    {
-        image[x][y] = color;
-        if (x - 1 >= 0 && image[x - 1][y] == target)
-        {
-            help(image, x - 1, y, color, target);
-        }
-        if (x + 1 < image.size() && image[x + 1][y] == target)
-        {
-            help(image, x + 1, y, color, target);
-        }
-        if (y - 1 >= 0 && image[x][y - 1] == target)
-        {
-            help(image, x, y - 1, color, target);
-        }
-        if (y + 1 < image[0].size() && image[x][y + 1] == target)
-        {
-            help(image, x, y + 1, color, target);
-        }
-    }
-
 public:
     // descp mine
-    vector<vector<int>> floodFill(vector<vector<int>> &image, int sr, int sc, int color)
+    vector<vector<int>> floodFill(vector<vector<int>> &image, int sr, int sc, int newColor)
     {
-        if (color != image[sr][sc])
-            help(image, sr, sc, color, image[sr][sc]);
+        int oldColor = image[sr][sc];
+        if (oldColor == newColor)
+        {
+            return image;
+        }
+        int row = image.size(), col = image[0].size();
+        int around[5] = {0, 1, 0, -1, 0};
+        queue<pair<int, int>> q;
+        q.emplace(sr, sc);
+        while (!q.empty())
+        {
+            auto now = q.front();
+            q.pop();
+            image[now.first][now.second] = newColor;
+            for (int i = 0; i < 4; i++)
+            {
+                int x = now.first + around[i],
+                    y = now.second + around[i + 1];
+                if (x >= 0 && y >= 0 && x < row && y < col && image[x][y] == oldColor)
+                {
+                    image[x][y] = newColor;
+                    q.emplace(x, y);
+                }
+            }
+        }
+
         return image;
     }
 };

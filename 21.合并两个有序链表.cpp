@@ -25,26 +25,21 @@ public:
         auto res = new ListNode(-1);
         auto head = res;
 
-        while (a != nullptr || b != nullptr)
+        while (a != nullptr && b != nullptr)
         {
-            if (a != nullptr && b != nullptr)
+            if (a->val < b->val)
             {
-                if (a->val < b->val)
-                {
-                    head->next = a;
-                    a = a->next;
-                }
-                else
-                {
-                    head->next = b;
-                    b = b->next;
-                }
-                head = head->next;
-                continue;
+                head->next = a;
+                a = a->next;
             }
-            head->next = a == nullptr ? b : a;
-            break;
+            else
+            {
+                head->next = b;
+                b = b->next;
+            }
+            head = head->next;
         }
+        head->next = a == nullptr ? b : a;
 
         return res->next;
     }
