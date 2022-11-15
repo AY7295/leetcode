@@ -18,36 +18,18 @@ struct ListNode
 class Solution
 {
 public:
-    // descp most voted solution
+    // descp mine
     ListNode *deleteDuplicates(ListNode *head)
     {
-        ListNode *cur_node = head;
-        while (cur_node && cur_node->next)
+        auto s = head;
+        while (s != nullptr && s->next != nullptr)
         {
-            ListNode *next_node = cur_node->next;
-            if (cur_node->val == next_node->val)
-                cur_node->next = next_node->next;
+            if (s->val == s->next->val)
+                s->next = s->next->next;
             else
-                cur_node = next_node;
+                s = s->next;
         }
         return head;
     }
-
-    // descp mine
-    //  ListNode *deleteDuplicates(ListNode *head)
-    //  {
-    //      auto s = head;
-
-    //     while (s != nullptr && s->next != nullptr)
-    //     {
-    //         if (s->val == s->next->val)
-    //         {
-    //             s->next = s->next->next;
-    //             continue;
-    //         }
-    //         s = s->next;
-    //     }
-    //     return head;
-    // }
 };
 // @lc code=end
