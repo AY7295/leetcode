@@ -8,31 +8,28 @@ using namespace std;
 // @lc code=start
 class Solution
 {
-
-    vector<vector<int>> result;
-
-    // Backtracking
-    void permutation(vector<int> &nums, int i, int n)
-    {
-        if (i == n)
-        {
-            result.push_back(nums);
-            return;
-        }
-
-        for (int j = i; j <= n; j++)
-        {
-            swap(nums[i], nums[j]);
-            permutation(nums, i + 1, n);
-            swap(nums[i], nums[j]);
-        }
-    }
-
 public:
     // descp most voted solution
     vector<vector<int>> permute(vector<int> &nums)
     {
+        vector<vector<int>> result;
 
+        // Backtracking
+        function<void(vector<int> &, int, int)> permutation = [&](vector<int> &nums, int i, int n)
+        {
+            if (i == n)
+            {
+                result.push_back(nums);
+                return;
+            }
+
+            for (int j = i; j <= n; j++)
+            {
+                swap(nums[i], nums[j]);
+                permutation(nums, i + 1, n);
+                swap(nums[i], nums[j]);
+            }
+        };
         permutation(nums, 0, nums.size() - 1);
 
         return result;

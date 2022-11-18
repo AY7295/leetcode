@@ -19,68 +19,69 @@ struct TreeNode
 // @lc code=start
 class Solution
 {
-    bool IsTheSame(TreeNode *a, TreeNode *b)
+    bool isTheSame(TreeNode *left, TreeNode *right)
     {
-        if (a == nullptr && b == nullptr)
+        if (left == nullptr && right == nullptr)
         {
             return true;
         }
-        if (a == nullptr || b == nullptr)
+        if (left == nullptr || right == nullptr)
         {
             return false;
         }
-        if (a->val != b->val)
+        if (left->val != right->val)
         {
             return false;
         }
-        return IsTheSame(a->left, b->right) && IsTheSame(b->left, a->right);
+        return isTheSame(left->left, right->right) && isTheSame(right->left, left->right);
     }
 
 public:
-    // descp mine same as most voted solution
+    // descp mine
+    bool isSymmetric(TreeNode *root)
+    {
+        if (root == nullptr)
+        {
+            return true;
+        }
+        return isTheSame(root->left, root->right);
+    }
+
+    // descp 迭代
     // bool isSymmetric(TreeNode *root)
     // {
     //     if (root == nullptr)
-    //     {
     //         return true;
+
+    //     stack<TreeNode *> stk;
+    //     stk.push(root->left);
+    //     stk.push(root->right);
+    //     bool ans = true;
+    //     while (!stk.empty() && ans)
+    //     {
+    //         TreeNode *tree1 = nullptr;
+    //         TreeNode *tree2 = nullptr;
+    //         if (!stk.empty())
+    //             tree1 = stk.top();
+    //         stk.pop();
+    //         if (!stk.empty())
+    //             tree2 = stk.top();
+    //         stk.pop();
+
+    //         if (!tree1 || !tree2)
+    //         {
+    //             if (!tree1 && !tree2)
+    //                 continue;
+    //             else
+    //                 return false;
+    //         }
+    //         ans = tree1->val == tree2->val;
+    //         stk.push(tree1->left);
+    //         stk.push(tree2->right);
+    //         stk.push(tree1->right);
+    //         stk.push(tree2->left);
     //     }
-    //     return IsTheSame(root->left, root->right);
+    //     return ans;
     // }
-
-    // descp 迭代
-    bool isSymmetric(TreeNode *root)
-    {
-        if (!root)
-            return true;
-        stack<TreeNode *> stk;
-        stk.push(root->left);
-        stk.push(root->right);
-        bool ans = true;
-        while (!stk.empty() && ans)
-        {
-            TreeNode *tree1 = NULL;
-            TreeNode *tree2 = NULL;
-            if (!stk.empty())
-                tree1 = stk.top();
-            stk.pop();
-            if (!stk.empty())
-                tree2 = stk.top();
-            stk.pop();
-
-            if (!tree1 || !tree2)
-            {
-                if (!tree1 && !tree2)
-                    continue;
-                else
-                    return false;
-            }
-            ans = tree1->val == tree2->val;
-            stk.push(tree1->left);
-            stk.push(tree2->right);
-            stk.push(tree1->right);
-            stk.push(tree2->left);
-        }
-        return ans;
-    }
 };
 // @lc code=end
