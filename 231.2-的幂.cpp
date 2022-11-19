@@ -11,28 +11,15 @@ public:
     // descp most voted solution
     bool isPowerOfTwo(int n)
     {
-        if (n <= 0)
-            return false;
-        return ((n & (n - 1)) == 0);
+        return n <= 0 ? false : (n & (n - 1)) == 0;
     }
 
     // descp mine
     // bool isPowerOfTwo(int n)
     // {
-    //     if (n <= 0)
-    //         return false;
-
-    //     long int m = 1;
-    //     for (int i = 0; i < 31; i++)
-    //     {
-    //         if (n == m)
-    //             return true;
-    //         else if (m > n)
-    //             return false;
-    //         m *= 2;
-    //     }
-
-    //     return false;
+    //     if (n == 1)
+    //         return true;
+    //     return n <= 0 ? false : !(n & (n + ~1));
     // }
 };
 // @lc code=end

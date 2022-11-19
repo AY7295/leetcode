@@ -11,20 +11,6 @@ using namespace std;
 class Solution
 {
 public:
-    // descp official
-    // int hammingWeight(uint32_t n)
-    // {
-    //     int ret = 0;
-    //     for (int i = 0; i < 32; i++)
-    //     {
-    //         if (n & (1 << i))
-    //         {
-    //             ret++;
-    //         }
-    //     }
-    //     return ret;
-    // }
-
     // descp most voted solution
     int hammingWeight(uint32_t n)
     {
@@ -38,5 +24,22 @@ public:
 
         return count;
     }
+
+    // descp mine
+    //  int hammingWeight(uint32_t n)
+    //  {
+    //      int count = 0;
+
+    //     while (n)
+    //     {
+    //         if (n & 1)
+    //         {
+    //             count++;
+    //         }
+    //         n >>= 1;
+    //     }
+
+    //     return count;
+    // }
 };
 // @lc code=end
