@@ -3,7 +3,7 @@
  *
  * [121] 买卖股票的最佳时机
  */
-#include <algorithm>
+#include <vector>
 using namespace std;
 // @lc code=start
 class Solution

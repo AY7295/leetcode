@@ -3,7 +3,7 @@
  *
  * [3] 无重复字符的最长子串
  */
-#include <algorithm>
+#include <vector>
 #include <string>
 using namespace std;
 // @lc code=start
