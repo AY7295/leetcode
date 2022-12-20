@@ -3,7 +3,7 @@
  *
  * [704] 二分查找
  */
-#include <algorithm>
+#include <vector>
 using namespace std;
 
 // @lc code=start
@@ -26,7 +26,7 @@ public:
     //     int left = 0, right = nums.size() - 1, mid;
     //     while (left <= right)
     //     {
-    //         mid = (left + right) / 2;
+    //         mid = left + (right-left+1) / 2;
     //         if (nums[mid] == target)
     //             return mid;
     //         else if (nums[mid] < target)
