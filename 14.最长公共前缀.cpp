@@ -4,6 +4,7 @@
  * [14] 最长公共前缀
  */
 #include <string>
+#include <vector>
 #include <algorithm>
 using namespace std;
 // @lc code=start
