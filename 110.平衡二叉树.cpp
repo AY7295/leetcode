@@ -16,11 +16,9 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 // @lc code=start
-
 class Solution
 {
 public:
-
     // descp most voted solution
     bool ans;
     int checkBalance(TreeNode *root)
