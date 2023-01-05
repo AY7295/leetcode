@@ -3,8 +3,7 @@
  *
  * [108] 将有序数组转换为二叉搜索树
  */
-#include <algorithm>
-#include <cmath>
+#include <vector>
 using namespace std;
 //  Definition for a binary tree node.
 struct TreeNode
