@@ -3,7 +3,7 @@
  *
  * [383] 赎金信
  */
-#include <algorithm>
+#include <unordered_map>
 #include <string>
 using namespace std;
 // @lc code=start

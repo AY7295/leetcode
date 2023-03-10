@@ -3,7 +3,7 @@
  *
  * [59] 螺旋矩阵 II
  */
-#include <algorithm>
+#include <vector>
 using namespace std;
 // @lc code=start
 class Solution
@@ -19,32 +19,28 @@ public:
             x = x0, y = y0;
             while (y < n + y0)
             {
-                ret[x][y++] = num;
-                num++;
+                ret[x][y++] = num++;
             }
 
             x++, y--;
             while (x < n + x0)
             {
-                ret[x++][y] = num;
-                num++;
+                ret[x++][y] = num++;
             }
 
             x--, y--;
             while (y >= y0)
             {
-                ret[x][y--] = num;
-                num++;
+                ret[x][y--] = num++;
             }
 
             x--, y++;
             while (x > x0)
             {
-                ret[x--][y] = num;
-                num++;
+                ret[x--][y] = num++;
             }
 
-            n = n - 2;
+            n -= 2;
             x0++;
             y0++;
         }
