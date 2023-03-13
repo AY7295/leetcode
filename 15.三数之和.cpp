@@ -3,7 +3,7 @@
  *
  * [15] 三数之和
  */
-#include <algorithm>
+#include <vector>
 using namespace std;
 // @lc code=start
 class Solution
@@ -11,7 +11,7 @@ class Solution
 public:
     vector<vector<int>> threeSum(vector<int> &nums)
     {
-        sort(nums.begin(), nums.end()); //关键
+        sort(nums.begin(), nums.end()); // 关键
         vector<vector<int>> ans;
         int n = nums.size(), now, sum, i, j, k;
 
